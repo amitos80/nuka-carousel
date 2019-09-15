@@ -128,6 +128,8 @@ export default class Carousel extends React.Component {
       slideCountChanged ||
       shouldUpdate(this.props, nextProps, [
         'cellSpacing',
+        'cellSpacingLeft',
+        'cellSpacingRight',
         'vertical',
         'slideWidth',
         'slideHeight',
@@ -581,7 +583,12 @@ export default class Carousel extends React.Component {
     switch (this.state.cellAlign) {
       case 'left': {
         offset = 0;
-        offset -= this.props.cellSpacing * target;
+        if (this.props.cellSpacingLeft ){
+          offset -= this.props.cellSpacingLeft * target;
+        } else {
+          offset -= this.props.cellSpacing * target;
+        }
+
         break;
       }
       case 'center': {
@@ -591,7 +598,13 @@ export default class Carousel extends React.Component {
       }
       case 'right': {
         offset = this.state.frameWidth - this.state.slideWidth;
-        offset -= this.props.cellSpacing * target;
+        if (this.props.cellSpacingRight ){
+          offset -= this.props.cellSpacingRight * target;
+        } else {
+          offset -= this.props.cellSpacing * target;
+        }
+
+
         break;
       }
     }

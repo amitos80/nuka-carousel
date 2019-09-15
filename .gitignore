@@ -26,7 +26,8 @@ Desktop.ini
 $RECYCLE.BIN/
 
 # App specific
-
+.idea
+.idea/
 node_modules/
 bower_components/
 .tmp
